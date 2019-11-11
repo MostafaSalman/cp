@@ -8,13 +8,17 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <priority_queue.h>
+#include "priority_queue.h"
+#include "Design_Patterns.h"
 
+int size_pq1 = 0;
+int size_pq2 = 0;
 /* Function to Create A New Node */
 Node* newNode(void *ptr, void *arg, int p)
 {
+	ptr_func prt_func = ptr;
 	Node* new_node = (Node*)malloc(sizeof(Node));
-	new_node->task_ptr = ptr;
+	new_node->task_ptr = prt_func;
 	new_node->vargp = arg;
 	new_node->priority = p;
 	new_node->next = NULL;
@@ -33,10 +37,15 @@ void pop(Node** head)
 /* Function to push Node in a position according to priority */
 void push(Node** head,void *ptr, void *arg, int p)
 {
+	if (head == &pq1)
+		size_pq1++;
+	if (head == &pq2)
+		size_pq2++;
+	ptr_func prt_func = ptr;
 	Node* start = (*head);
 
 	/* Create new Node */
-	Node* new_node = newNode(ptr,arg, p);
+	Node* new_node = newNode(prt_func,arg, p);
 
 	/* If The head of list has lesser priority than new node.
 	 * So insert new node before head node and change head node. */
@@ -59,23 +68,4 @@ void push(Node** head,void *ptr, void *arg, int p)
 	}
 }
 
-/*main function
-int main()
-{
-	// Create a Priority Queue
-	Node* pq = newNode(&main,"4", 1);
-	push(&pq, &push, "salman", 3);
-	push(&pq, &pop, "mostafa", 0);
-	push(&pq, &newNode, "5565", 2);
-	push(&pq, &push, "0", 0);
-	//pop(&pq);
 
-	while (pq != NULL) {
-		printf("%s ",(char *)(pq)->vargp);
-		printf(" %p ",(void *)(pq)->task_ptr);
-		printf("\t\t");
-		pop(&pq);
-	}
-
-	return 0;
-} */

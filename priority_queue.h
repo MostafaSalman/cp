@@ -8,14 +8,17 @@
 #ifndef PRIORITY_QUEUE_H_
 #define PRIORITY_QUEUE_H_
 
+typedef void (*ptr_func)();
+extern int size_pq1;
+extern int size_pq2;
+
 /* Node struct */
 typedef struct node {
-	void (*task_ptr)(void *vargp);		/* pointer to the task */
+	ptr_func task_ptr;					/* pointer to the task */
 	void *vargp;						/* task arguments */
 	int priority;          				/* Lower values indicate higher priority */
 	struct node* next;
 } Node;
-
 
 /*=========================== APIs ===========================*/
 Node* newNode(void *ptr, void *arg, int p);
