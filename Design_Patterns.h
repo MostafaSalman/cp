@@ -17,11 +17,11 @@ extern Node* pq2;
 
 
 /*=========================== APIs ===========================*/
-void func1(int a);
-void func2(char *b);
-void func3(int a);
-void func4(char *b);
-//void *timer(void *arg);
+void func1(void *ptr_data);
+void func2(void *ptr_data);
+void func3(void *ptr_data);
+void func4(void *ptr_data);
+void *timer(void *arg);
 void *thr_post(void *arg);
 void *thr_func1(void *pq1);
 void *thr_func2(void *pq2);

@@ -18,12 +18,12 @@ int main() {
 	pq2 = newNode(&thr_post, (void*)0, 0);
 
 	/* create threads */
-	/* timer thread
+	/* timer thread */
 	rc = pthread_create(&thr[0], NULL, timer, NULL);
 	if (rc){
 		fprintf(stderr, "error: pthread_create, rc: %d\n", rc);
 		return EXIT_FAILURE;
-	}*/
+	}
 
 	/* Generation thread */
 	rc = pthread_create(&thr[1], NULL, thr_post, NULL);
@@ -49,6 +49,10 @@ int main() {
 	/* block until all threads complete */
 	for (i = 0; i < NUM_THREADS; ++i) {
 		pthread_join(thr[i], NULL);
+	}
+
+	while(1){
+
 	}
 
 	return EXIT_SUCCESS;
