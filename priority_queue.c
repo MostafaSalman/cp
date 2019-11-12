@@ -14,8 +14,7 @@
 int size_pq1 = 0;
 int size_pq2 = 0;
 /* Function to Create A New Node */
-Node* newNode(void *ptr, void *arg, int p)
-{
+Node* newNode(void *ptr, void *arg, int p){
 	ptr_func prt_func = ptr;
 	Node* new_node = (Node*)malloc(sizeof(Node));
 	new_node->task_ptr = prt_func;
@@ -27,16 +26,14 @@ Node* newNode(void *ptr, void *arg, int p)
 }
 
 /* Function to Remove the element with the highest priority form the list */
-void pop(Node** head)
-{
+void pop(Node** head){
 	Node* new_node = *head;
 	(*head) = (*head)->next;
 	free(new_node);
 }
 
 /* Function to push Node in a position according to priority */
-void push(Node** head,void *ptr, void *arg, int p)
-{
+void push(Node** head,void *ptr, void *arg, int p){
 	if (head == &pq1)
 		size_pq1++;
 	if (head == &pq2)

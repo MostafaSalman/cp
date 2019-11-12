@@ -8,7 +8,7 @@
 #ifndef PRIORITY_QUEUE_H_
 #define PRIORITY_QUEUE_H_
 
-typedef void (*ptr_func)();
+typedef void (*ptr_func)(void *);
 extern int size_pq1;
 extern int size_pq2;
 

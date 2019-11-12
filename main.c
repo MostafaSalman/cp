@@ -18,22 +18,29 @@ int main() {
 	pq2 = newNode(&thr_post, (void*)0, 0);
 
 	/* create threads */
-	/* Generation thread */
-	rc = pthread_create(&thr[0], NULL, thr_post, NULL);
+	/* timer thread
+	rc = pthread_create(&thr[0], NULL, timer, NULL);
 	if (rc){
-			fprintf(stderr, "error: pthread_create, rc: %d\n", rc);
-			return EXIT_FAILURE;
-		}
+		fprintf(stderr, "error: pthread_create, rc: %d\n", rc);
+		return EXIT_FAILURE;
+	}*/
+
+	/* Generation thread */
+	rc = pthread_create(&thr[1], NULL, thr_post, NULL);
+	if (rc){
+		fprintf(stderr, "error: pthread_create, rc: %d\n", rc);
+		return EXIT_FAILURE;
+	}
 
 	/* thread 2 */
-	rc = pthread_create(&thr[1], NULL, thr_func1, (void*)pq1);
+	rc = pthread_create(&thr[2], NULL, thr_func1, (void*)pq1);
 	if (rc){
 		fprintf(stderr, "error: pthread_create, rc: %d\n", rc);
 		return EXIT_FAILURE;
 	}
 
 	/* thread 3 */
-	rc = pthread_create(&thr[2], NULL, thr_func2, (void*)pq2);
+	rc = pthread_create(&thr[3], NULL, thr_func2, (void*)pq2);
 	if (rc){
 		fprintf(stderr, "error: pthread_create, rc: %d\n", rc);
 		return EXIT_FAILURE;
